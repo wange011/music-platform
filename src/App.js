@@ -1,26 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Home from './components/Home'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props) {
+
+    super(props);
+
+    this.state = {
+      loggedIn: false
+    }
+
+  }
+
+  handleLogin = () => {
+    
+    /* fetch('/login').then((response) => {
+
+    }) */
+
+    this.setState({
+      loggedIn: true
+    })
+
+  }
+
+  render() {
+
+    if(this.state.loggedIn) {
+      
+      return(
+        <div className="App">
+          <Home />
+        </div>  
+      )
+
+    } else {
+      
+      return(
+        <div className="App">
+          <div className="Login">
+            <form className="w3-container">
+
+              <label>First Name</label>
+              <input className="w3-input" type="text"></input>
+
+              <label>Last Name</label>
+              <input className="w3-input" type="text"></input>
+
+              <button className="w3-button w3-green" onClick={() => this.handleLogin()}></button>
+
+            </form>
+          </div>
+        </div>  
+      )
+    
+    }
+
+  }
+
 }
 
 export default App;
