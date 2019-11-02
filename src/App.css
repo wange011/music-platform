@@ -1,22 +1,211 @@
-.App {
-  text-align: center;
+/*
+Colors:
+#022F40
+#183446
+#046E8F
+#0090C1
+#38AECC
+
+Fonts:
+font-family: 'Roboto', sans-serif;
+font-family: 'Lato', sans-serif;
+*/
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  color: #183446;
+  font-family: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
+#root, .App {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/*Login Page*/
+
+.Login {
+  float: none;
+  margin: 200px auto;
+  font-size: 22px;
+}
+
+.Login label {
+  margin-top: 10px;
+}
+
+.Login input {
+  padding: 8px;
+  display: block;
+  width: 100%;
+  border: 1px solid #CCCCCC;
+}
+
+.Login button {
+  background: #38AECC;
   color: white;
+  border-radius: 4px;
+  height: 50px;
+  width: 110px; 
+  float: right;
+  margin-top: 14px;
 }
 
-.App-link {
-  color: #09d3ac;
+.Login p {
+  font-size: 16px;
+  color: #183446;
+  margin-top: 8px;
+}
+
+.Login p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/*Home*/
+
+.Home {
+  height: 100%;
+  width: 100%;
+}
+
+.row {
+  margin: 0px;
+}
+
+/*Nav*/
+
+.Nav {
+  height: 100%;
+  width: 18%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.Nav a:hover {
+  text-decoration: none;
+}
+
+.LinkContainer {
+  width: 100%;
+  height: 90%;
+  font-size: 19px;
+}
+
+.Link {
+  width: 100%;
+  height: 65px;
+  padding-left: 35px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  color: #022F40;
+  opacity: 1;
+}
+
+.Link:hover {
+  background: #EEEEEE; 
+}
+
+.Link.active{
+  background: #DDDDDD;
+  border-left: 7px solid #046E8F;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)
+}
+
+.Link.active img {
+  filter: invert(22%) sepia(78%) saturate(2067%) hue-rotate(172deg) brightness(101%) contrast(97%);
+}
+
+.Link img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.Link p {
+  margin-left: 40px;
+  display: inline-block;
+}
+
+.ProfileLinkContainer {
+  width: 100%;
+  height: 10%;
+  font-size: 19px;
+  position: relative;
+}
+
+#AccountLink {
+  position: absolute;
+  bottom: 0;
+}
+
+/*MainPage*/
+.MainPage {
+  width: 100%;
+  height: 100%;
+}
+
+.MainPage h1 {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.ArtList {
+  padding: 0px 40px;
+}
+
+.Artwork {
+  display: inline-block;
+  margin: 8px 8px;
+  position: relative;
+}
+
+.Artwork img {
+  border-radius: 10px;
+  height: 150px;
+  transition: .5s ease;
+}
+
+.ArtworkOverlay {
+  background-color: #FFFFFF;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  border-radius: 15px;
+  padding-top: 3px;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  visibility: hidden;
+}
+
+.Artwork:hover {
+  cursor: pointer;
+}
+
+.Artwork:hover img {
+  height: 300px;
+  -webkit-filter: brightness(80%);
+  transition: .5s ease;
+}
+
+.Artwork:hover .ArtworkOverlay {
+  visibility: visible;
+  transition: 1s ease;
+}
+
+.ArtworkOverlay p {
+  padding: 0px;
+  margin: 3px 12px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width:200px;
+  color: black;
 }

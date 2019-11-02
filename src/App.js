@@ -17,11 +17,12 @@ class App extends Component {
   handleLogin = () => {
     
     /* fetch('/login').then((response) => {
-
+      set state depending on response
     }) */
 
     this.setState({
-      loggedIn: true
+      loggedIn: true,
+      username: "wange011"
     })
 
   }
@@ -32,7 +33,7 @@ class App extends Component {
       
       return(
         <div className="App">
-          <Home />
+          <Home username={this.state.username}/>
         </div>  
       )
 
@@ -40,16 +41,17 @@ class App extends Component {
       
       return(
         <div className="App">
-          <div className="Login">
+          <div className="Login col-sm-6">
             <form className="w3-container">
 
-              <label>First Name</label>
-              <input className="w3-input" type="text"></input>
+              <label>Username</label>
+              <input className="w3-round" type="text"></input>
 
-              <label>Last Name</label>
-              <input className="w3-input" type="text"></input>
+              <label>Password</label>
+              <input className="w3-round" type="text"></input>
 
-              <button className="w3-button w3-green" onClick={() => this.handleLogin()}></button>
+              <button className="w3-button" onClick={() => this.handleLogin()}>Login</button>
+              <a><p>I don't have an account</p></a>
 
             </form>
           </div>
