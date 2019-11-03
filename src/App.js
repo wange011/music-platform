@@ -23,7 +23,7 @@ class App extends Component {
     let parent = e.target.closest(".w3-container");
     let uid = parent.getElementsByTagName('input')[1].value;
 
-    fetch(' http://ec2-52-90-105-22.compute-1.amazonaws.com/api/get_balance?source_uid=' + uid, {
+    fetch(' http://localhost:8010/proxy/api/get_balance?source_uid=' + uid, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -45,7 +45,7 @@ class App extends Component {
     }).then((json) => {
 
         if (json) {
-          fetch(' http://ec2-52-90-105-22.compute-1.amazonaws.com/api/get_transfers?uid=' + json.uid, {
+          fetch(' http://localhost:8010/proxy/api/get_transfers?uid=' + json.uid, {
             method: 'GET',
             headers: {
               'Accept': 'application/json',

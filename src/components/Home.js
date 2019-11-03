@@ -36,7 +36,7 @@ class Home extends Component {
 
         let getAll = () => {
 
-            fetch(' http://ec2-52-90-105-22.compute-1.amazonaws.com/api/get_all_objects', {
+            fetch(' http://localhost:8010/proxy/api/get_all_objects', {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -53,7 +53,7 @@ class Home extends Component {
         }
         
         let updateUser = () => {
-            fetch(' http://ec2-52-90-105-22.compute-1.amazonaws.com/api/get_balance?source_uid=' + this.state.uid, {
+            fetch(' http://localhost:8010/proxy/api/get_balance?source_uid=' + this.state.uid, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -67,7 +67,7 @@ class Home extends Component {
             }).then((json) => {
 
                 if (json) {
-                    fetch(' http://ec2-52-90-105-22.compute-1.amazonaws.com/api/get_transfers?uid=' + this.state.uid, {
+                    fetch(' http://localhost:8010/proxy/api/get_transfers?uid=' + this.state.uid, {
                     method: 'GET',
                         headers: {
                             'Accept': 'application/json',
