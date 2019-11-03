@@ -95,7 +95,7 @@ class DonationPage extends Component {
             return;
         }
 
-        fetch('http://localhost:8010/proxy/api/make_transfer?source_uid=' + this.state.uid + 
+        fetch(' http://ec2-52-90-105-22.compute-1.amazonaws.com/api/make_transfer?source_uid=' + this.state.uid + 
         '&destination_uid=' + this.state.piece.author_id + '&amount=' + amount, {
             method: 'POST',
             headers: {
