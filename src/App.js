@@ -45,10 +45,10 @@ class App extends Component {
             <form className="w3-container">
 
               <label>Username</label>
-              <input className="w3-round" type="text"></input>
+              <input className="w3-round" type="text" onSubmit={(e) => {e.preventDefault()}}></input>
 
               <label>Password</label>
-              <input className="w3-round" type="text"></input>
+              <input className="w3-round" type="text" onSubmit={(e) => {e.preventDefault()}}></input>
 
               <button className="w3-button" onClick={() => this.handleLogin()}>Login</button>
               <a><p>I don't have an account</p></a>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import homeIcon from '../res/home-24px.svg';
 import favIcon from '../res/favorite-24px.svg';
+import upIcon from '../res/add-24px.svg';
 import accIcon from '../res/account_circle-24px.svg';
 
 class Nav extends Component {
@@ -37,6 +38,12 @@ class Nav extends Component {
                         <div className="Link">
                             <img src={favIcon}></img>
                             <p>Favorites</p>
+                        </div>    
+                    </Link>
+                    <Link to="/upload" onClick={(e) => this.handleSwitch(e)}>
+                        <div className="Link">
+                            <img src={upIcon}></img>
+                            <p>Upload</p>
                         </div>    
                     </Link>
                 </div>
