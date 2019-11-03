@@ -144,8 +144,10 @@ html, body {
 
 /*MainPage*/
 .MainPage {
-  width: 100%;
+  width: 82%;
   height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .MainPage h1 {
@@ -222,7 +224,8 @@ html, body {
   font-size: 18px;
   text-overflow: ellipsis;
   visibility: hidden;
-  opacity: .8
+  opacity: .8;
+  max-width: 60%;
 }
 
 .Artwork button {
@@ -243,6 +246,7 @@ html, body {
   height: 30px;
   padding-left: 1px;
   visibility: hidden;
+  transition: none;
 }
 
 .Artwork:hover {
@@ -254,17 +258,18 @@ html, body {
   transition: 1s ease;
 }
 
-.Artwork:hover img {
+.ArtList .Artwork:hover > img {
   visibility: visible;
-  height: 300px;
+  height: 220px;
   -webkit-filter: brightness(80%);
   transition: .5s ease;
 }
 
 .Artwork:hover button img {
+  visibility: visible;
   height: 30px;
   -webkit-filter: brightness(100%);
-  transition: 1s ease;
+  transition: 0.5s ease;
 }
 
 .Artwork:hover .ArtworkOverlay {
@@ -279,7 +284,7 @@ html, body {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width:200px;
+  max-width: 80%;
   color: black;
 }
 
@@ -292,17 +297,13 @@ html, body {
 }
 
 /*ArtPage*/
-
-.ArtPageWrapper {
-  width: 1399px;
-  overflow: auto;
-  margin-bottom: 50px;
-}
-
 .ArtPage {
   height: 100%;
+  width: 82%;
   text-align: center;
+  padding-right: 60px;
   position: relative;
+  overflow: auto;
 }
 
 ::-webkit-scrollbar {
@@ -323,7 +324,6 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
-
 
 .BackButton {
   float: left;
@@ -414,7 +414,6 @@ html, body {
 
 .ArtPage .Artwork:hover img {
   visibility: visible;
-  height: 150px;
   -webkit-filter: brightness(80%);
   transition: .5s ease;
 }
@@ -428,6 +427,7 @@ html, body {
 .DonationPage {
   height: 100%;
   font-size: 16px;
+  text-align:center;
 }
 
 .DonationForm {
@@ -497,6 +497,7 @@ html, body {
   margin-right: auto;
   background: white;
   border: 1px solid #909090; 
+  text-align: left;
 }
 
 .PaymentMethods h2 {
@@ -544,9 +545,43 @@ html, body {
   border-radius: 5px;
 }
 
+.DonationPage h1 {
+  font-size: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  visibility: hidden;
+}
+
 /*UploadPage*/
 .UploadPage {
   height: 100%;
+}
+
+.UploadForm {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.UploadForm label {
+  font-size: 18px;
+  color: black;
+  margin: 20px;
+  margin-left: 40px;
+}
+
+.UploadForm input {
+  font-size: 18px;
+  margin-left: 40px;
+  width: 80%;
+}
+
+.UploadForm button {
+  position: absolute;
+  right: 91px;
+  top: 300px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
 .FileUpload label {
@@ -555,15 +590,21 @@ html, body {
   border: 1px solid #ccc;
   background: #CCCCCC;
   display: inline-block;
-  margin-left: 40px;
+  margin-left: 80px;
+  margin-top: 40px;
   cursor: pointer;
   transition: .4s ease;
+  text-align: center;
+}
+
+.FileUpload p {
+  font-size: 16px;
 }
 
 .FileUpload label img {
   opacity: .7;
   width: 60px;
-  margin-left: 180px;
+  margin-left: 0px;
   margin-top: 190px;
 }
 

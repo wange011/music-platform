@@ -16,8 +16,6 @@ class Nav extends Component {
         if (currentActive) {
 
             currentActive.classList.remove("active");
-            console.log("Removed active")
-            console.log(currentActive)
 
         }
         e.target.closest(".Link").classList.add("active");

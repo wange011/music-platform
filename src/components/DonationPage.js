@@ -13,7 +13,7 @@ class DonationPage extends Component {
 
         for (var i = 0; i < this.props.artList.length; i++) {
             let piece = this.props.artList[i];
-            if (piece.objectId == this.props.match.params.objectId) {
+            if (piece.object_id == this.props.match.params.object_id) {
                 artwork = piece;
                 break;
             }
@@ -21,7 +21,7 @@ class DonationPage extends Component {
 
         for (var i = 0; i < this.props.writingList.length; i++) {
             let piece = this.props.writingList[i];
-            if (piece.objectId == this.props.match.params.objectId) {
+            if (piece.object_id == this.props.match.params.object_id) {
                 artwork = piece;
                 break;
             }
@@ -29,7 +29,7 @@ class DonationPage extends Component {
 
         for (var i = 0; i < this.props.musicList.length; i++) {
             let piece = this.props.musicList[i];
-            if (piece.objectId == this.props.match.params.objectId) {
+            if (piece.object_id == this.props.match.params.object_id) {
                 artwork = piece;
                 break;
             }
@@ -37,21 +37,95 @@ class DonationPage extends Component {
 
         this.state = {
             piece: artwork,
-            currentBalance: 100
+            balance: props.balance,
+            uid: props.uid
         }
     
     }
 
+    componentDidUpdate = () => {
+        if (!this.state.piece) {
+            let artwork;
+
+            for (var i = 0; i < this.props.artList.length; i++) {
+                let piece = this.props.artList[i];
+                if (piece.object_id == this.props.match.params.object_id) {
+                    artwork = piece;
+                    break;
+                }
+            }
+
+            for (var i = 0; i < this.props.writingList.length; i++) {
+                let piece = this.props.writingList[i];
+                if (piece.object_id == this.props.match.params.object_id) {
+                    artwork = piece;
+                    break;
+                }
+            }
+
+            for (var i = 0; i < this.props.musicList.length; i++) {
+                let piece = this.props.musicList[i];
+                if (piece.object_id == this.props.match.params.object_id) {
+                    artwork = piece;
+                    break;
+                }
+            }
+
+            this.setState({
+                piece: artwork,
+                balance: this.props.balance
+            });
+        }
+
+        if (!this.state.uid) {
+            this.setState({
+                uid: this.props.uid
+            })
+        }
+
+    }
+
     handleDonate = (e) => {
         
+        let donationForm = e.target.closest('.DonationForm');
+
+        let amount = donationForm.getElementsByTagName('input')[1].value;
+
+        if (amount > this.state.balance) {
+            return;
+        }
+
+        fetch('http://localhost:8010/proxy/api/make_transfer?source_uid=' + this.state.uid + 
+        '&destination_uid=' + this.state.piece.author_id + '&amount=' + amount, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+            
+            if (response.ok) {
+                let donationPage = donationForm.parentNode;
+                donationPage.removeChild(donationForm);
+                donationPage.getElementsByTagName('h1')[0].style.visibility = "visible";
+            }
+
+        });
+
     }
 
     render() {
 
+        if (!this.state.piece) {
+            return(
+                <div className="DonationPage col-sm-9"></div>
+            )
+        }
+
         let backString = "/";
 
         if (this.props.match.params.return === "artpage") {
-            backString = "/view/" + this.state.piece.objectId; 
+            backString = "/view/" + this.state.piece.object_id; 
         }
 
         return(
@@ -69,7 +143,7 @@ class DonationPage extends Component {
                         <label className="left">Donating To</label>
                         <label className="right">Donation Amount</label>
 
-                        <input className="w3-input" type="text" placeholder={this.state.piece.objectAuthor} disabled />
+                        <input className="w3-input" type="text" placeholder={this.state.piece.author_handle} disabled />
                         <input className="w3-input" type="number" placeholder="1.00" onSubmit={(e) => {e.preventDefault()}} />
 
                         <label className="MessageLabel">Donation Message</label>
@@ -81,13 +155,15 @@ class DonationPage extends Component {
                         <div className="PaymentMethod">
                             <img src={payIcon} />
                             <h3>Capital One Banking Account</h3>
-                            <p>Current Balance: {this.state.currentBalance}</p>
+                            <p>Current Balance: {this.state.balance}</p>
                         </div>
                     </div>    
 
                     <button className="w3-button" onClick={(e) => this.handleDonate(e)}>Donate</button>
 
                 </div>    
+
+                <h1>Thanks For Your Donation!</h1>
 
             </div>
         )

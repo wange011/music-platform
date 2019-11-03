@@ -15,7 +15,17 @@ class MainPage extends Component {
             writingList: props.writingList,
             musicList: props.musicList
         }
-    
+
+    }
+
+    componentDidUpdate = () => {
+        if (this.state.artList.length == 0 && this.state.writingList == 0 && this.state.musicList == 0) {
+            this.setState({
+                artList: this.props.artList,
+                writingList: this.props.writingList,
+                musicList: this.props.musicList
+            })
+        }
     }
 
     handleFilter = (e) => {
@@ -25,8 +35,6 @@ class MainPage extends Component {
         let form = e.target.closest('form');
 
         let text = form.getElementsByTagName('input')[0].value;
-
-        console.log(this.props.artList);
 
         if (text === "") {
 
@@ -41,19 +49,21 @@ class MainPage extends Component {
 
         let newArtList = this.props.artList.filter((artwork) => {
 
-            return artwork.objectTitle.toLowerCase().replace(/\s+/g, '').includes(text.toLowerCase().replace(/\s+/g, ''));
+            console.log(artwork.title)
+            console.log(text)
+            return artwork.title.toLowerCase().replace(/\s+/g, '').includes(text.toLowerCase().replace(/\s+/g, ''));
 
         });
 
         let newWritingList = this.props.writingList.filter((artwork) => {
 
-            return artwork.objectTitle.toLowerCase().replace(/\s+/g, '').includes(text.toLowerCase().replace(/\s+/g, ''));
+            return artwork.title.toLowerCase().replace(/\s+/g, '').includes(text.toLowerCase().replace(/\s+/g, ''));
 
         });
 
         let newMusicList = this.props.musicList.filter((artwork) => {
 
-            return artwork.objectTitle.toLowerCase().replace(/\s+/g, '').includes(text.toLowerCase().replace(/\s+/g, ''));
+            return artwork.title.toLowerCase().replace(/\s+/g, '').includes(text.toLowerCase().replace(/\s+/g, ''));
 
         });
 
@@ -69,13 +79,13 @@ class MainPage extends Component {
 
         let artListHTML = this.state.artList.map( (artwork) => {
             return(
-                <Link to={"/view/" + artwork.objectId} >
+                <Link to={"/view/" + artwork.object_id}>
                     <div className="Artwork">
-                        <img src={artwork.objectPreviewImageUrl} />
+                        <img src={artwork.url} />
                         <div className="ArtworkOverlay">
-                            <p>{artwork.objectTitle}</p>
+                            <p>{artwork.title}</p>
                         </div>
-                        <Link to={"/donate/" + artwork.objectId + "/mainpage" }>
+                        <Link to={"/donate/" + artwork.object_id + "/mainpage" }>
                             <button className="w3-circle">
                                 <img src={donIcon} />
                             </button>
@@ -86,7 +96,7 @@ class MainPage extends Component {
         });
 
         return(
-            <div className="MainPage col-sm-9">
+            <div className="MainPage">
                 <div className="SearchBar" >
                     <form onSubmit={(e) => {this.handleFilter(e)}}>
                         <input type="text" placeholder="Search" onChange={(e) => {this.handleFilter(e)}} />

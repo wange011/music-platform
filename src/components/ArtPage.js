@@ -12,10 +12,10 @@ class ArtPage extends Component {
 
         for (var i = 0; i < this.props.artList.length; i++) {
             let piece = this.props.artList[i];
-            if (piece.objectId == this.props.match.params.objectId) {
+            if (piece.object_id == this.props.match.params.object_id) {
                 artwork = piece;
                 recommended = this.props.artList.filter((artwork) => {
-                    return piece.objectId != artwork.objectId
+                    return piece.object_id != artwork.object_id
                 });
                 break;
             }
@@ -23,10 +23,10 @@ class ArtPage extends Component {
 
         for (var i = 0; i < this.props.writingList.length; i++) {
             let piece = this.props.writingList[i];
-            if (piece.objectId == this.props.match.params.objectId) {
+            if (piece.object_id == this.props.match.params.object_id) {
                 artwork = piece;
                 recommended = this.props.writingList.filter((artwork) => {
-                    return piece.objectId != artwork.objectId
+                    return piece.object_id != artwork.object_id
                 });
                 break;
             }
@@ -34,54 +34,56 @@ class ArtPage extends Component {
 
         for (var i = 0; i < this.props.musicList.length; i++) {
             let piece = this.props.musicList[i];
-            if (piece.objectId == this.props.match.params.objectId) {
+            if (piece.object_id == this.props.match.params.object_id) {
                 artwork = piece;
                 recommended = this.props.musicList.filter((artwork) => {
-                    return piece.objectId != artwork.objectId
+                    return piece.object_id != artwork.object_id
                 });
                 break;
             }
         }
-        
-        if (artwork.objectType === "art") {
+
+        if (!artwork) {
+            return(
+                <div className="ArtPageWrapper"></div>
+            )
+        }
+
+        if (artwork.creation_type === "IMAGE") {
 
             let artListHTML = recommended.map( (artwork) => {
                 return(
-                    <Link to={"/view/" + artwork.objectId} >
+                    <Link to={"/view/" + artwork.object_id} >
                         <div className="Artwork">
-                            <img src={artwork.objectPreviewImageUrl} />
+                            <img src={artwork.url} />
                         </div> 
                     </Link>
                 )
             });
 
             return(
-                <div className="ArtPageWrapper">
-                    <div className="ArtPage col-sm-11">
-                        <Link to="/">
-                            <button className="BackButton w3-circle">
-                                <img src={backIcon} />
+                <div className="ArtPage">
+                    <Link to="/">
+                        <button className="BackButton w3-circle">
+                            <img src={backIcon} />
+                        </button>
+                    </Link>
+                    <div className="ArtCard">
+                        <img src={artwork.url} />
+                        <p>{artwork.title}</p>
+                        <Link to={"/donate/" + artwork.object_id + "/artpage" }>
+                            <button className="w3-button">
+                                <img src={donIcon} />
+                                <p>Donate</p>
                             </button>
                         </Link>
-                        <div className="ArtCard">
-                            <img src={artwork.objectPreviewImageUrl} />
-                            <p>{artwork.objectTitle}</p>
-                            <Link to={"/donate/" + artwork.objectId + "/artpage" }>
-                                <button className="w3-button">
-                                    <img src={donIcon} />
-                                    <p>Donate</p>
-                                </button>
-                            </Link>
-                        </div>
-                        <h1>Some Other Works You Might Be Interested In</h1>
-                        <br></br>
-                        <div className="recommended">
-                            {artListHTML}
-                        </div>    
                     </div>
-                    <div className="spacing">
+                    <h1>Some Other Works You Might Be Interested In</h1>
+                    <br></br>
+                    <div className="recommended">
+                        {artListHTML}
                     </div>    
-                </div>    
+                </div>
             )
         } 
     }

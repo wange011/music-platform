@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Home from './components/Home'
 import './App.css';
+import 'react-notifications/lib/notifications.css';
+
 
 class App extends Component {
 
@@ -14,16 +16,58 @@ class App extends Component {
 
   }
 
-  handleLogin = () => {
-    
-    /* fetch('/login').then((response) => {
-      set state depending on response
-    }) */
+  handleLogin = (e) => {
+  
+    e.preventDefault();
 
-    this.setState({
-      loggedIn: true,
-      username: "wange011"
-    })
+    let parent = e.target.closest(".w3-container");
+    let uid = parent.getElementsByTagName('input')[1].value;
+
+    fetch('http://localhost:8010/proxy/api/get_balance?source_uid=' + uid, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+        
+    }).then((response) => {
+
+      if (response.ok) {
+        
+        return response.json();
+
+      } else {
+        
+        return false;
+
+      }
+
+    }).then((json) => {
+
+        if (json) {
+          fetch('http://localhost:8010/proxy/api/get_transfers?uid=' + json.uid, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            }
+          }).then((transfer_response) => {
+
+            return transfer_response.json();
+
+          }).then((transfer_json) => {
+            
+            this.setState({
+              balance: json.balance,
+              uid: json.uid,
+              transfers: transfer_json,
+              loggedIn: true
+            })
+          
+          })
+        }
+
+    });
 
   }
 
@@ -33,7 +77,7 @@ class App extends Component {
       
       return(
         <div className="App">
-          <Home username={this.state.username}/>
+          <Home uid={this.state.uid} balance={this.state.balance} transfers={this.state.transfers}/>
         </div>  
       )
 
@@ -48,9 +92,9 @@ class App extends Component {
               <input className="w3-round" type="text" onSubmit={(e) => {e.preventDefault()}}></input>
 
               <label>Password</label>
-              <input className="w3-round" type="text" onSubmit={(e) => {e.preventDefault()}}></input>
+              <input className="w3-round" type="password" onSubmit={(e) => {e.preventDefault()}}></input>
 
-              <button className="w3-button" onClick={() => this.handleLogin()}>Login</button>
+              <button className="w3-button" onClick={(e) => this.handleLogin(e)}>Login</button>
               <a><p>I don't have an account</p></a>
 
             </form>
