@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/music-platform/static/css/main.eeb0cbeb.chunk.css",
-    "main.js": "/music-platform/static/js/main.c78a46ea.chunk.js",
-    "main.js.map": "/music-platform/static/js/main.c78a46ea.chunk.js.map",
+    "main.js": "/music-platform/static/js/main.660c5bf6.chunk.js",
+    "main.js.map": "/music-platform/static/js/main.660c5bf6.chunk.js.map",
     "runtime-main.js": "/music-platform/static/js/runtime-main.5b55f5e0.js",
     "runtime-main.js.map": "/music-platform/static/js/runtime-main.5b55f5e0.js.map",
     "static/css/2.d6d49252.chunk.css": "/music-platform/static/css/2.d6d49252.chunk.css",
     "static/js/2.e4fcc8d0.chunk.js": "/music-platform/static/js/2.e4fcc8d0.chunk.js",
     "static/js/2.e4fcc8d0.chunk.js.map": "/music-platform/static/js/2.e4fcc8d0.chunk.js.map",
     "index.html": "/music-platform/index.html",
-    "precache-manifest.282c523cab8170aca2f48ced19d13615.js": "/music-platform/precache-manifest.282c523cab8170aca2f48ced19d13615.js",
+    "precache-manifest.25ec0cf9bd66b1bf9b3467d073fba0f3.js": "/music-platform/precache-manifest.25ec0cf9bd66b1bf9b3467d073fba0f3.js",
     "service-worker.js": "/music-platform/service-worker.js",
     "static/css/2.d6d49252.chunk.css.map": "/music-platform/static/css/2.d6d49252.chunk.css.map",
     "static/css/main.eeb0cbeb.chunk.css.map": "/music-platform/static/css/main.eeb0cbeb.chunk.css.map",
@@ -27,6 +27,6 @@
     "static/css/2.d6d49252.chunk.css",
     "static/js/2.e4fcc8d0.chunk.js",
     "static/css/main.eeb0cbeb.chunk.css",
-    "static/js/main.c78a46ea.chunk.js"
+    "static/js/main.660c5bf6.chunk.js"
   ]
 }
