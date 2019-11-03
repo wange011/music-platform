@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "//wange011.github.io/music-platform/static/css/main.eeb0cbeb.chunk.css",
+    "main.js": "//wange011.github.io/music-platform/static/js/main.4d36ea50.chunk.js",
+    "main.js.map": "//wange011.github.io/music-platform/static/js/main.4d36ea50.chunk.js.map",
+    "runtime-main.js": "//wange011.github.io/music-platform/static/js/runtime-main.e678fa10.js",
+    "runtime-main.js.map": "//wange011.github.io/music-platform/static/js/runtime-main.e678fa10.js.map",
+    "static/css/2.4692b72b.chunk.css": "//wange011.github.io/music-platform/static/css/2.4692b72b.chunk.css",
+    "static/js/2.e4fcc8d0.chunk.js": "//wange011.github.io/music-platform/static/js/2.e4fcc8d0.chunk.js",
+    "static/js/2.e4fcc8d0.chunk.js.map": "//wange011.github.io/music-platform/static/js/2.e4fcc8d0.chunk.js.map",
+    "index.html": "//wange011.github.io/music-platform/index.html",
+    "precache-manifest.f10f0971b61d10f9c074b8aba77cd060.js": "//wange011.github.io/music-platform/precache-manifest.f10f0971b61d10f9c074b8aba77cd060.js",
+    "service-worker.js": "//wange011.github.io/music-platform/service-worker.js",
+    "static/css/2.4692b72b.chunk.css.map": "//wange011.github.io/music-platform/static/css/2.4692b72b.chunk.css.map",
+    "static/css/main.eeb0cbeb.chunk.css.map": "//wange011.github.io/music-platform/static/css/main.eeb0cbeb.chunk.css.map",
+    "static/media/account_circle-24px.svg": "//wange011.github.io/music-platform/static/media/account_circle-24px.f322cb5a.svg",
+    "static/media/add-24px.svg": "//wange011.github.io/music-platform/static/media/add-24px.ca3efbf7.svg",
+    "static/media/arrow_back-24px.svg": "//wange011.github.io/music-platform/static/media/arrow_back-24px.ac944051.svg",
+    "static/media/attach_money-24px.svg": "//wange011.github.io/music-platform/static/media/attach_money-24px.6b1dbb74.svg",
+    "static/media/capital_one.png": "//wange011.github.io/music-platform/static/media/capital_one.06f648cd.png",
+    "static/media/favorite-24px.svg": "//wange011.github.io/music-platform/static/media/favorite-24px.4c67d875.svg",
+    "static/media/home-24px.svg": "//wange011.github.io/music-platform/static/media/home-24px.5924881c.svg",
+    "static/media/notifications.css": "//wange011.github.io/music-platform/static/media/notification.c0d3c94c.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e678fa10.js",
+    "static/css/2.4692b72b.chunk.css",
+    "static/js/2.e4fcc8d0.chunk.js",
+    "static/css/main.eeb0cbeb.chunk.css",
+    "static/js/main.4d36ea50.chunk.js"
+  ]
+}
