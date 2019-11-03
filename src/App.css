@@ -52,6 +52,7 @@ html, body {
   width: 110px; 
   float: right;
   margin-top: 14px;
+  transition: .5s ease;
 }
 
 .Login p {
@@ -156,6 +157,45 @@ html, body {
   margin-bottom: 15px;
 }
 
+.SearchBar {
+  width: 100%;
+  padding: 0;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 13%;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.SearchBar form {
+  position: relative;
+  bottom: 0px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  border: none;
+  height: 50px;
+}
+
+.SearchBar input {
+  height: 90%;
+  width: 70%;
+  background: url(res/baseline_search_black_18dp.png) no-repeat scroll 3px 3px;
+  background-size: 30px 30px;
+  background-position: right;
+  padding-left: 15px;
+  padding-right: 25px;
+  border-radius: 15px;
+  border: 1px solid #CCCCCC;
+  font-size: 18px;
+}
+
+.SearchBar form:hover {
+  background: #FFFFFF;
+}
+
+
 .ArtList {
   padding: 0px 40px;
 }
@@ -182,16 +222,49 @@ html, body {
   font-size: 18px;
   text-overflow: ellipsis;
   visibility: hidden;
+  opacity: .8
+}
+
+.Artwork button {
+  width: 35px;
+  height: 35px;
+  padding: 0px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: white;
+  border: none;
+  visibility: hidden;
+  opacity: .8;
+}
+
+.Artwork button img {
+  width: 30px;
+  height: 30px;
+  padding-left: 1px;
+  visibility: hidden;
 }
 
 .Artwork:hover {
   cursor: pointer;
 }
 
+.Artwork:hover button {
+  visibility: visible;
+  transition: 1s ease;
+}
+
 .Artwork:hover img {
+  visibility: visible;
   height: 300px;
   -webkit-filter: brightness(80%);
   transition: .5s ease;
+}
+
+.Artwork:hover button img {
+  height: 30px;
+  -webkit-filter: brightness(100%);
+  transition: 1s ease;
 }
 
 .Artwork:hover .ArtworkOverlay {
@@ -208,4 +281,107 @@ html, body {
   overflow: hidden;
   max-width:200px;
   color: black;
+}
+
+.ArtworkOverlay:hover {
+  opacity: 1;
+}
+
+.Artwork button:hover {
+  opacity: 1;
+}
+
+/*ArtPage*/
+
+.ArtPage {
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.BackButton {
+  float: left;
+  border: none;
+  background: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  transition: .5s ease;
+  margin-left: 70px;
+  margin-top: 28px;
+}
+
+.BackButton img {
+  transition: .5s ease;
+  width: 35px;
+}
+
+.BackButton:hover {
+  background: #38AECC;
+  transition: .5s ease;
+}
+
+.BackButton:hover img {
+  filter: invert(100%) sepia(0%) saturate(5476%) hue-rotate(148deg) brightness(107%) contrast(107%);
+  transition: .1s ease;
+}
+
+.ArtCard {
+  width: 40%;
+  border-radius: 15px;
+  margin-left: auto; 
+  margin-right: auto;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+.ArtCard img {
+  width: 100%;
+  border-radius: 15px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.ArtCard p {
+  display: inline-block;
+  font-size: 20px;
+  margin: 20px 20px;
+}
+
+.ArtCard button {
+  background: #38AECC;
+  color: white;
+  border-radius: 4px;
+  height: 45px;
+  width: 110px; 
+  float: right;
+  margin-right: 20px;
+  margin-top: 12px;
+  padding-top: 10px;
+  transition: .5s ease;
+}
+
+.ArtCard button img {
+  width: 25px;
+  padding-bottom: 3px;
+  filter: invert(100%) sepia(0%) saturate(5476%) hue-rotate(148deg) brightness(107%) contrast(107%);
+  transition: .5s ease;
+}
+
+.ArtCard button p {
+  margin: 0px;
+  padding: 0px;
+  font-size: 16px;
+}
+
+.ArtCard button:hover img {
+  width: 25px;
+  filter: invert(0%) sepia(0%) saturate(10%) hue-rotate(169deg) brightness(88%) contrast(100%);
+  transition: .5s ease;
+}
+
+.ArtPage h1 {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  margin-top: 80px;
 }
